@@ -1,0 +1,210 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:h="http://xmlns.jcp.org/jsf/html" styleClass="row"
+              xmlns:f="http://xmlns.jcp.org/jsf/core" > 
+
+    <div class="box">
+
+        <div class="box-header">
+            <h:form id="navform" prependId="false">
+
+            </h:form> 
+        </div>
+        <div class="box-content padded">
+            <div class="tab-content">
+                <div id="list" class="tab-pane box active" style="font-size: 1.0em; padding: 5px;">
+                    <div class="tab-pane box active" id="list">
+                        <div class="box" style="margin-bottom: -1px">
+                            <div class="box-header">
+                                <span class="title">Press Release</span>
+                            </div>
+                        </div>
+                        <h:panelGroup layout="block" style="border: 1px solid #F0F0F1; padding: 10px 5px">
+                            <h:form id="contentForm" class="form-horizontal" prependId="false" enctype="multipart/form-data"  >
+
+
+                                <div style="height: auto;background: #00AAE7; padding: 3px; color: white">     
+                                    <h:messages/>
+                                </div>
+                                <h:panelGroup id="contentAdd" layout="block"  >
+                                    <style>
+                                        .controls{margin-left: 0px!important}
+                                    </style>
+                                    <div class="col-lg-12" style="background-color: #D9E6E9">
+
+                                        <div class="span6 col-lg-6">
+                                            <br/>
+
+                                            <div class="control-group">
+                                                <div class="controls">
+                                                    <label class="control-label">Name of Document</label>
+                                                    <h:inputText value="#{contentController.content.ptitle}" style="width: 350px; margin-right: 5px"/> 
+                                                </div>
+                                            </div>  
+
+                                             
+                                            <div class="control-group">
+                                                <div class="controls">
+                                                    <label class="control-label">Show Press Release</label>
+                                                    <h:selectOneMenu value="#{contentController.content.ispublished}" style="width: 350px">
+                                                        <f:selectItem itemLabel="No" itemValue="no"/>
+                                                        <f:selectItem itemLabel="Yes" itemValue="yes"/>
+                                                    </h:selectOneMenu>
+                                                </div>
+                                            </div>
+                                             
+                                        </div>
+                                        <div class="span6 col-lg-6">
+                                            <div class="">
+                                                          <h:dataTable value="#{contentController.contentResources}"  var="a" styleClass=" responsive dataTable">
+
+                                                                <h:column>
+                                                                    <f:facet name="header">Category</f:facet>
+                                                                    <i class="icon-#{a.category == 7 ? 'image' : a.category == 10 ? 'copy':''}"></i>
+                                                                    #{a.category == 7 ? 'Images' : a.category == 10 ? 'Docs':''}
+                                                                </h:column>
+                                                                <h:column>
+                                                                    <f:facet name="header">File Name and Location</f:facet> 
+                                                                    <ui:param name="pic" value="#{a.category == 7 ? '/'.concat(commonQuery.getApplicationSettings(20,1))
+                                                                                                  .concat('/').concat(a.resourceurl):'../resources/images/icon/'
+                                                                                                  .concat(a.category).concat('.png')}"/>
+                                                                    <div id="gallery">
+                                                                        <a href="#{a.category == 7?pic:'#'}">
+                                                                            #{a.resourceurl}        
+                                                                            <img src="#{pic}" style="width: 40px"/>
+                                                                        </a>
+                                                                    </div>
+                                                                </h:column>
+
+
+
+                                                                <h:column>
+                                                                    <f:facet name="header">Options</f:facet>
+                                                                    <h:commandLink rel="tooltip" class="btn btn-blue" style="padding: 0px 10px!important"
+                                                                                   action="#{contentController.deleteResource()}" onclick="return confirm('Are you sure you want to delete?')">
+                                                                        <i class="icon-wrench"></i>delete
+                                                                        <!--<f:ajax render=":resourceForm:resourceAdd"/>-->
+                                                                        <f:setPropertyActionListener target="#{resourcesController.resource}" value="#{a}" />
+                                                                    </h:commandLink>
+                                                                </h:column>
+                                                            </h:dataTable>
+                                                            <br/><br/>
+                                                            <div class="">
+                                                                <div class="box">
+                                                                    <div class="box-header">
+                                                                        <ul class="nav nav-tabs nav-tabs-left">
+                                                                            <li class="active">
+                                                                                <a href="#resources" data-toggle="tab"><i class="icon-align-justify"></i> 
+                                                                                    Upload Resources For Content                    	</a></li>
+
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="box-content padded" style="border: 1px solid #F0F0F1">
+                                                                        <div class="tab-content">
+
+
+
+                                                                            <div id="resources" class="tab-pane box active" style="font-size: 1.0em; padding: 5px;">    
+                                                                                <h:inputFile id="file" 
+                                                                                             label="file"
+                                                                                             value="#{contentController.part1}" 
+                                                                                             >
+                                                                                </h:inputFile>
+                                                                                <h:inputFile id="file1" 
+                                                                                             label="file"
+                                                                                             value="#{contentController.part2}" 
+                                                                                             >
+                                                                                </h:inputFile>
+                                                                                <h:inputFile id="file2" 
+                                                                                             label="file"
+                                                                                             value="#{contentController.part3}" 
+                                                                                             >
+                                                                                </h:inputFile>
+                                                                                <h:inputFile id="file3" 
+                                                                                             label="file"
+                                                                                             value="#{contentController.part4}" 
+                                                                                             >
+                                                                                </h:inputFile>
+                                                                                <h:inputFile id="file4" 
+                                                                                             label="file"
+                                                                                             value="#{contentController.part5}" 
+                                                                                             >
+                                                                                </h:inputFile>
+                                                                                <h:inputFile id="file5" 
+                                                                                             label="file"
+                                                                                             value="#{contentController.part6}" 
+                                                                                             >
+                                                                                </h:inputFile>
+
+
+
+
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>   
+      
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-actions ">
+                                        <h:commandButton class="btn btn-primary margr10" value="Save #{contentController.inEditMode ? 'Editted':'New'} Content"
+                                                         action="#{contentController.saveContent()}"/>
+                                        <h:commandButton class="btn btn-primary margr10" value="Reset Form"
+                                                         action="#{contentController.reset()}" rendered="#{contentController.inEditMode}"/>
+                                        <h:commandButton class="btn btn-danger margr10" value="Delete Content" rendered="#{contentController.inEditMode}"
+                                                         action="#{contentController.deleteContent()}" onclick="return confirm('Are you sure you want to delete?')"/>
+
+                                    </div>
+                                </h:panelGroup>
+                                <h1><h:outputLabel style="font-size: 18px; color: #00AAE7; text-align: center" value="List Of All Press Release"/></h1>
+                                <h:dataTable value="#{contentController.press}"  var="o" styleClass="dTable responsive dataTable" >
+                                    <h:column></h:column>
+
+                                    <h:column>
+                                        <f:facet name="header">Page Title</f:facet> 
+                                        <h:commandLink  action="#{contentController.editContent()}" value="#{o.ptitle}" class="btn-link"/>
+                                    </h:column> 
+                                    <h:column>
+                                        <f:facet name="header">Parent Category</f:facet>
+                                            #{contentController.parent(o.cattype, o.categoryid)}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Is Published</f:facet>
+                                            #{o.ispublished}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Sub Page</f:facet>
+
+                                        <h:commandLink value="Add Sub Page" rel="tooltip" class="btn btn-brown" style="padding: 0px 10px!important"
+                                                       action="#{contentController.addSubPage()}">
+                                            <i class="icon-plus"></i>
+                                            <!--<f:ajax render=":contentForm"/>-->
+                                            <f:setPropertyActionListener target="#{contentController.content}" value="#{o}" />
+                                        </h:commandLink>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Options</f:facet>
+                                        <h:commandLink rel="tooltip"  class="btn btn-blue" style="padding: 0px 10px!important"
+                                                       action="#{contentController.editContent()}">
+                                            <i class="icon-wrench"></i>Select
+                                            <f:ajax render=":contentForm"/>
+                                            <f:setPropertyActionListener target="#{contentController.content}" value="#{o}" />
+                                        </h:commandLink>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+
+                        </h:panelGroup>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</h:panelGroup>

@@ -1,0 +1,558 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+    <f:view locale="#{languageSelectorController.userSelectedLanguage}">
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <link href="./theme/Resources_stma/css/main.css" rel="stylesheet" type="text/css" />
+            <!--<link rel="shortcut icon" href="./theme/scapital/nav/favicon.ico" type="image/x-icon" />-->
+            <link rel="shortcut icon" href="./theme/Resources_stma/navs/favicon.ico" type="image/x-icon"></link>
+            
+            
+            
+        <!--gallery css-->
+        <link href="./theme/Resources_ama/css/facebox.css" rel="stylesheet" type="text/css" />
+        <link href="./theme/Resources_ama/css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="./js/facebox.js"></script>
+        <script type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-prettyPhoto.js"></script>
+
+        <!-- Gallery Specific Elements --> 
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("a[rel^='prettyPhoto']").prettyPhoto({
+                    theme: 'dark_rounded'
+                });
+            });
+        </script>
+
+
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $('a[rel*=facebox]').facebox({
+                    loadingImage: 'loading.gif',
+                    closeImage: 'closelabel.png'
+                })
+            })
+        </script>
+        <!--End of Gallery-->
+
+
+
+        <title>                         
+            <ui:insert name="adv_title">${commonQuery.getApplicationSettings(2,1)}</ui:insert> 
+
+        </title>      
+
+                <!--         Bootstrap Core CSS -->
+                        <link href="./theme/Resources_ama/css/bootstrap.css" rel="stylesheet"/>
+
+
+        </h:head>
+        <script language="javascript">
+        function checkContact() {
+                    var email = document.getElementById('cemail');
+                    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                    var phoneno = /^\d{10}$/;
+                    var cname = document.forms["form1"]["cname"].value;
+                    var comment = document.forms["form1"]["comment"].value;
+                    var tel = document.forms["form1"]["tel"].value;
+                    var ans = document.forms["form1"]["ans"].value;
+                    var correct = document.forms["form1"]["correct"].value;
+                    var phone = document.getElementById("tel");
+                    var RE = /^[\d\.\-]+$/;
+                    if (cname == "" || cname == null)
+                    {
+                        alert("Name can not be Empty");
+                        return false;
+                    }
+                    if (!filter.test(email.value)) {
+                        alert('Please provide a valid email address');
+                        email.focus;
+                        return false;
+                    }
+
+                    if (tel == "" || tel == null)
+                    {
+                        alert("Mobile Number can not be Empty");
+                        return false;
+                    }
+
+                    if (!RE.test(phone.value))
+                    {
+                        alert("You have entered an invalid Mobile number");
+                        return false;
+                    }
+                    
+                    if(phone.value.length != 10){
+                       alert("You have entered an invalid Mobile number");
+                        return false;  
+                    }
+
+                    if (comment == "" || comment == null)
+                    {
+                        alert("Comment can not be Empty");
+                        return false;
+                    }
+                    if (ans == "" || ans == null)
+                    {
+                        alert("Capture can not be null ");
+                        return false;
+                    }
+                    if (correct != ans)
+                    {
+                        alert("Answer is WRONG. Form will reset for new Entries");
+                        return;
+                    }
+                }
+
+
+
+        function checkComment() {
+            
+            var name = document.forms["form2"]["name"].value;
+            var commenttitle = document.forms["form2"]["commenttitle"].value;
+            var commentmessage = document.forms["form2"]["commentmessage"].value;
+            var ans = document.forms["form2"]["ans"].value;
+            var correct = document.forms["form2"]["correct"].value;
+
+            if (name == "" || name == null)
+            {
+                alert("Name can not be Empty");
+                return false;
+            }
+             
+            if (commenttitle == "" || commenttitle == null)
+            {
+                alert("Comment Title can not be Empty");
+                return false;
+            }
+            if (commentmessage == "" || commentmessage == null)
+            {
+                alert("Comment Message can not be Empty");
+                return false;
+            }
+            if (ans == "" || ans == null)
+            {
+                alert("Capture can not be null ");
+                return false;
+            }
+            if (correct != ans)
+            {
+                alert("Wrong Capture ");
+                return;
+            }
+        }
+
+    </script>
+        
+        <h:body>
+          <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+            </script>  
+            <h:panelGroup layout="block" styleClass="adv-wrapper-upper">
+                <h:panelGroup layout="block" styleClass="upper-link fl">
+                    <h:outputText value="#{commonQuery.upperLinks(6, false, false)}" escape="false"/>
+                </h:panelGroup>
+                <ul id="get-connected" class="fl">  
+                    <li>
+                        <a id="fbk" href="https://www.facebook.com/pages/Sekondi-Takoradi-Metropolitan-Assembly-Ghana/158945830852669?" title="Connect with STMA on Facebook" target="_blank">Facebook</a>
+                    </li>
+                    <li>
+                        <a id="twt" href="https://twitter.com/city_stma" title="Connect with STMA on Twitter" target="_blank">Twitter</a>
+                    </li>
+                    <li>
+                        <a id="lin" href="https://plus.google.com " title="Connect with STMA on Google+" target="_blank">Google +</a>
+                    </li>
+                </ul>
+                <h:panelGroup layout="block" styleClass="searchword fr">
+                    <h:form> 
+                        <h:inputText  value="Search..." onfocus="if (this.value == 'Search...')
+                                    this.value = '';" onblur="if (this.value == '')
+                                                this.value = 'Search...';"/>
+                        <h:commandButton value="Go" disabled="true"/>
+                    </h:form>
+
+                </h:panelGroup>
+                <div style="clear: both"/>
+            </h:panelGroup>
+          <h:panelGroup layout="block" styleClass="adv_wrapper">
+                <h:panelGroup layout="block" styleClass="adv_header_wrapper">
+                    <a href="./">
+                        <h:panelGroup layout="block" styleClass="site_header_name fl">
+                            <a href="./">
+
+                                <h:panelGroup layout="block" styleClass="site_header_name fl">
+                                    <h:outputText value="${commonQuery.resourceDetails(122,true )}" escape="false"/>
+
+
+                                </h:panelGroup>
+                                <div style="clear: both"/>
+                            </a>
+
+                            <ui:param name="contact" value="#{commonQuery.pp.pageTitle == 'Contact Us' ? true:false}"/>
+                            <ui:param name="Sekondi - Takoradi" value="#{commonQuery.pp.pageid == 5351 || commonQuery.pp.pageTitle == 'Sekondi - Takoradi'? true : false}"/>
+                            <ui:param name="gallery" value="#{commonQuery.pp.pageTitle.toLowerCase() == 'gallery' ? false:true}"/>
+                        </h:panelGroup>
+                        <h:panelGroup layout="block" styleClass="site_header_name fr">
+                            <h:outputText value="${commonQuery.getResourceDetail(5394, true, true)}" escape="false"/>
+                        </h:panelGroup>
+                        <div style="clear: both"/>
+                    </a>
+                </h:panelGroup>
+                <div style="clear: both"/>
+                <h:panelGroup layout="block" styleClass="menu_horizontal fl">
+                    <h:outputText value="${commonQuery.HomeLinks2(1,false, true, false, false)}" escape="false"/>
+                </h:panelGroup>
+                <div style="clear: both"/>
+                <h:panelGroup layout="block" styleClass="khead"/> 
+                <h:panelGroup layout="block" styleClass="pcontent fl">
+                  
+                    <h:panelGroup layout="block" rendered="#{!kumasicity}">
+                        <h:panelGroup layout="block" styleClass=" left-sidebar two-col one fl" rendered="#{!contact}">
+                            <h:outputText value="#{commonQuery.Sublinks1()}" escape="false"/>
+                        </h:panelGroup>
+                        <h:panelGroup layout="block" styleClass="left-sidebar contact-col small fl" rendered="#{contact}">
+                            <div class="inner contact-address rounded">
+                                <h4>Address</h4>
+                                <h:outputText value="${commonQuery.getApplicationSettings(23,1)}" escape="false"/>
+                                <h4 class="title">Give us a call</h4>
+                                <h:outputText value="${commonQuery.getApplicationSettings(8,1)}" escape="false"/> 
+                                <h4 class="title">E-mail Us</h4>
+                                <h:outputText value="${commonQuery.getApplicationSettings(7,1)}" escape="false"/>
+
+                                <h4 class="title">Stay Connected with us:</h4>
+                                <ul id="get-connected" class="fl">  
+                                    <li>
+                                        <a id="fbk" href="https://www.facebook.com/pages/Sekondi-Takoradi-Metropolitan-Assembly-Ghana/158945830852669?" title="Connect with STMA on Facebook" target="_blank">Facebook</a>
+                                    </li>
+                                    <li>
+                                        <a id="twt" href="https://twitter.com/city_stma" title="Connect with STMA on Twitter" target="_blank">Twitter</a>
+                                    </li>
+                                    <li>
+                                        <a id="lin" href="https://plus.google.com " title="Connect with STMA on Google+" target="_blank">Google +</a>
+                                    </li>
+                                </ul>
+                                <div style="clear: both"/>
+                            </div>
+                            <div style="clear: both"/>
+                        </h:panelGroup> 
+                       
+                        
+                        
+                        
+                       
+                             
+                        <h:panelGroup layout="block" styleClass="two-col two fl" style="width: #{contact ? '480px' : '51.4%'}; min-height: 300px; max-width:450px ;">
+                            <div class="whereweare"><h:outputText value="#{commonQuery.hereAreWe}" escape="false"/></div>   
+                            <div class="ptitle"><h:outputText value="#{commonQuery.pp.pageTitle}" escape="false"/></div>
+                            <h:panelGroup styleClass="psourcing" rendered="#{commonQuery.pp.categoryId == commonQuery.newsId}">Source: <h:outputText value="#{commonQuery.pp.source}" escape="false" styleClass="psource"/> &nbsp;|&nbsp; Date Published: <h:outputText value="#{commonQuery.pp.datePublished}" escape="false" styleClass="psource"/></h:panelGroup> 
+                            <h:outputText value="#{commonQuery.pageFirstImage()}" escape="false"/>
+                            <div class="content">
+
+
+                                        <!--for things other than NEWs-->
+                                        <h:panelGroup rendered="#{commonQuery.pp.categoryId != commonQuery.newsId}"> 
+                                            <h:panelGroup rendered="#{!commonQuery.isItAlbumOrPic(commonQuery.pp.categoryId, commonQuery.pp.pageid)}">  
+
+                                                <h:outputText class="img-responsive" value="#{commonQuery.pageFirstImageForNotNews()}" style="overflow: hidden;float: left; margin-right: 10px" escape="false"/>
+                                                <h:outputText value="#{commonQuery.pp.pageContent}" style=""  escape="false"/>
+                                            </h:panelGroup>
+                                        </h:panelGroup>
+
+                                        <!--  content for news-->
+                                        <h:panelGroup   
+                                            rendered="#{commonQuery.pp.categoryId == commonQuery.newsId}"> 
+
+                                            <h:outputText value="#{commonQuery.pp.pageContent}" escape="false"/>
+
+                                        </h:panelGroup>
+                                        <h:panelGroup layout="block" rendered="#{commonQuery.isItPicsUnderAlbums(commonQuery.pp.categoryId)}">
+                                            <ui:include src="/pages/picsUnderAlbum.xhtml" /> 
+                                        </h:panelGroup>
+                                        <h:panelGroup layout="block" rendered="#{commonQuery.isItAlbums(commonQuery.pp.pageid)}">
+                                            <ui:include src="/pages/albums.xhtml" /> 
+                                        </h:panelGroup>
+
+                                        <h:panelGroup rendered="#{!commonQuery.isItAlbumOrPic(commonQuery.pp.categoryId, commonQuery.pp.pageid)}">  
+
+                                            <ui:include src="/pages/category.xhtml" />
+
+                                            <h:panelGroup layout="block" rendered="#{!gallery}">
+                                                <ui:include src="/pages/subpage.xhtml" /> 
+                                            </h:panelGroup>
+                                            <ui:include src="/pages/page_resources.xhtml" />
+
+                                            <h:panelGroup layout="block" rendered="#{!gallery}">
+                                                <ui:include src="/pages/included-pages.xhtml" /> 
+                                            </h:panelGroup>
+                                        </h:panelGroup>
+
+
+                                        <!--contact us only shows when you are on contact us page-->
+                                        <div class="contactus" style="display: #{commonQuery.checkingForContactUs()}">
+                                            <!--<div style="background: dodgerblue; height: 10px; width: 480px;"><h:messages style="color: white"/></div>-->
+                                            <form id="form1" onsubmit="return checkContact()" name="form1" method="post" action="contact.jsp" class="validate">
+
+                                                <div id="ermsg"></div>
+                                                <input type = "hidden" value="#{commonQuery.getUrlForReturn()}" name="content_id" id="content_id" />
+
+                                                <table border="0" cellspacing="2" cellpadding="0">
+
+                                                    <tr>
+                                                        <td width="129">Name</td>
+                                                        <td width="229"><label>
+                                                                <input class="form-control reqd" type="text" name="cname" id="cname"  />
+                                                            </label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Email</td>
+                                                        <td><input class="form-control reqd-email" type="text" name="cemail" id="cemail"    /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Mobile</td>
+                                                        <td><input class="form-control" type="text" name="tel" id="tel" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Topic</td>
+                                                        <td><label>
+                                                                <select class="form-control reqd" name="topic" id="topic"  >
+                                                                    <option>About Website</option>
+                                                                    <option>Support</option>
+                                                                    <option>Technical</option>
+                                                                    <option>General Contact</option>
+                                                                </select>    
+                                                            </label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td valign="top">Comment</td>
+                                                        <td><label>
+                                                                <textarea class="form-control reqd" name="comment" id="comment" onclick="checkEmail()"  ></textarea>
+                                                            </label></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td valign="top">&nbsp;</td>
+                                                        <td><label>
+                                                                <label style="font-size: 14px; color: blue"> What is:  
+                                                                    <h:outputLabel   value="#{commonQuery.pubp}"    /> +  <h:outputLabel value="#{commonQuery.pubq}" /> ?</label> 
+                                                                <input   class="form-control" type="text" name="ans" id="ans" placeholder="Answer" />                       
+
+
+
+                                                            </label></td>
+                                                        <td>           
+                                                            <input   class="form-control" name="correct"  id="correct" type="hidden"  value="#{commonQuery.pube}" />
+                                                        </td>
+
+
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td valign="top">&nbsp;</td>
+                                                        <td><label>
+                                                                <input class="btn btn-primary margr10" type="submit"   name="button" id="button" value="Contact Us" />
+                                                            </label></td>
+                                                    </tr>
+                                                </table>
+                                            </form>
+                                        </div>
+ <!--shows when you have to be commenting-->
+                                            <div class="commenting"  style="display: #{commonQuery.checkingForComment()}">
+
+                                                <form id="form2" onsubmit="return checkComment()" name="form2" method="post" action="comment.jsp" class="validate">
+
+                                                    <div id="ermsg"></div>
+                                                    <h4>Fill out your Comment</h4>
+                                                    <input type = "hidden" value="#{commonQuery.pp.pageid}" name="content_id" id="content_id" />
+                                                    <input type = "hidden" value="#{commonQuery.getUrlForReturn()}" name="coment_id" id="coment_id" />
+
+                                                    <table border="0" cellspacing="2" cellpadding="0">
+
+                                                        <tr>
+                                                            <td ><label>
+                                                                    <input size="60"   placeholder="Name" class="form-control  " type="text" name="name" id="name"  />
+                                                                </label></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td><input placeholder="Comment Title" class="form-control  " type="text" name="commenttitle" id="commenttitle"   /></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td><textarea placeholder="Comment Message" style="width: 350px; height: 100px" class="form-control" type="text" name="commentmessage" id="commentmessage" /></td>
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td><label>
+                                                                    <label style="font-size: 14px; color: blue"> What is:  
+                                                                        <h:outputLabel   value="#{commonQuery.pubp}"    /> +  <h:outputLabel value="#{commonQuery.pubq}" /> ?</label> 
+                                                                    <input   class="form-control" type="text" name="ans" id="ans" placeholder="Answer" />                       
+
+
+
+                                                                </label></td>
+                                                            <td>           
+                                                                <input   class="form-control" name="correct"  id="correct" type="hidden"  value="#{commonQuery.pube}" />
+                                                            </td>
+
+
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label>
+
+                                                                    <input class="btn btn-primary margr10" type="submit" name="button" id="button" value="Comment" />
+                                                                </label></td>
+                                                        </tr>
+                                                    </table>
+                                                </form>
+                                                <h:outputText value="#{commonQuery.showComment()}" escape="false"/>
+
+                                            </div>
+
+                           
+                                
+                                
+                                <!--</h:panelGroup>-->
+
+
+
+
+
+
+
+
+
+
+
+                                <!--<h:outputText value="#{commonQuery.pp.pageContent}" escape="false"/>-->
+                                <h:panelGroup layout="block" rendered="#{!gallery}">
+                                    <!--                                    <ui:include src="/pages/gallery.xhtml" /> -->
+                                </h:panelGroup>
+                                <ui:include src="/pages/included-pages.xhtml" />
+                                <ui:include src="/pages/category.xhtml" />
+                                <h:panelGroup layout="block" rendered="#{gallery}"> 
+                                    <ui:include src="/pages/subpage.xhtml" /> 
+                                </h:panelGroup>
+                                <h:panelGroup layout="block" rendered="#{!gallery}">
+                                    <ui:include src="/pages/subpage.xhtml" /> 
+                                </h:panelGroup>
+                                <ui:include src="/pages/page_resources.xhtml" />
+                            </div>
+                        </h:panelGroup>
+                                
+                                <h:panelGroup styleClass="right-panel fr" layout="block" rendered="#{!contact}">
+                            
+                            <!--mayor picture-->
+                            
+                            <h:panelGroup id="callout" layout="block">
+                                <ul>
+
+                                    <li class="mce border square-border">
+                                        <div>
+                                            <h:outputText escape="false" value="#{commonQuery.groupPictures(253, 'ul', 'mces','','bottom', true,true)}"/>
+                                        </div>
+                                    </li>
+                                    <li class="rlink border square-border">
+                                        <div class="inner header clist">
+                                            <h3>${commonQuery.getPageDetails(5362).pageTitle}</h3>
+                                            <h:outputText value="#{commonQuery.listCategoryDataResource(272, false, true)}" escape="false" />
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </h:panelGroup>
+                        </h:panelGroup>
+                         
+                            <div style="clear: both"/> 
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" rendered="#{kumasicity}">
+                        <h:outputText value="#{commonQuery.pageMainImage()}" escape="false"/><br/>
+                        <h:panelGroup layout="block" styleClass=" left-sidebar two-col one fl" rendered="#{!contact}">
+                            <h:outputText value="#{commonQuery.Sublinks1()}" escape="false"/>
+                        </h:panelGroup>
+                    </h:panelGroup>
+
+                </h:panelGroup>
+                <div style="clear: both"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="kfoot"/> 
+            <h:panelGroup layout="block" styleClass="adv-footer">
+                <div id="fmenu" class="row fl">
+                    <div class="block fl">
+                        <h3>${commonQuery.getPageDetails(5238).pageTitle}</h3>
+                        <h:outputText value="#{commonQuery.listCategoryData(139, false, false)}" escape="false"/>
+                    </div>
+                    <div class="block fl">
+                        <h3>${commonQuery.getPageDetails(5140).pageTitle}</h3>
+                        <h:outputText value="#{commonQuery.listCategoryData(133, false, false)}" escape="false"/>
+                    </div>
+                    <div class="block fl">
+                        <h3>${commonQuery.getPageDetails(5304).pageTitle}</h3>
+                        <ul>
+                            <li>
+                                <h:outputText value="#{commonQuery.imageList(5304, true, true)}" escape="false"/>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="block fl">
+                        <h3>${commonQuery.getPageDetails(5351).pageTitle}</h3> 
+                        <h:outputText value="#{commonQuery.listCategoryData(230, false, false)}" escape="false"/>
+                    </div>
+                    <div class="block fl"> 
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li><h:outputText value="${commonQuery.getApplicationSettings(7,1)}" escape="false"/></li>
+                            <li><h:outputText value="${commonQuery.getApplicationSettings(8,1)}" escape="false"/></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="legal fl">
+                    Copyright &copy; ${commonQuery.appDate} ${commonQuery.getApplicationSettings(0,1)}. All Rights Reserved.<br/>
+                </div>
+            </h:panelGroup>
+            <script type="text/javascript" src="./js/jquery_cycle_all.js"></script>
+            
+            
+            <script type="text/javascript">
+                                                                    jQuery(document).ready(function() {
+                                                                        $("#slider").easySlider({
+                                                                            auto: true,
+                                                                            speed: 200,
+                                                                            pause: 5000,
+                                                                            controlsShow: false,
+                                                                            continuous: true
+                                                                        });
+                                                                    });
+
+                                                                    jQuery(document).ready(function() {
+                                                                        $('.mces').cycle({
+                                                                            random: 1,
+                                                                            fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle,zoom etc...
+                                                                        });
+                                                                    });
+
+                                                                    jQuery(document).ready(function() {
+                                                                        $('.tops').cycle({
+                                                                            random: 1,
+                                                                            fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle,zoom etc...
+                                                                        });
+                                                                    });
+            </script>
+        </h:body>
+    </f:view>
+</html>
+
+

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:f="http://java.sun.com/jsf/core"
+              xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <h:form id="form1"  class="validate">
+        <div id="ermsg"></div>
+        <h4>Fill out your Comment</h4>
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Name:" />
+            <h:inputText class="form-control" value="#{commentController.userComment.userId}"/> 
+             
+            <h:outputLabel value="Comment Title"/>
+            <h:inputText  class="form-control"  value="#{commentController.userComment.commentTitle}"/> 
+            <h:outputLabel value="Comment Message:"/>
+            <h:inputTextarea class="form-control" value="#{commentController.userComment.userCommentMessage}"/>
+            
+            
+            <h:commandButton class="btn btn-primary margr10" value="Comment" action="#{commentController.saveComment()}"  />
+        </h:panelGrid>
+          <hr/>  
+       
+    </h:form>
+    <h:outputText value="#{commonQuery.showComment()}" escape="false"/>
+</h:panelGroup>
+

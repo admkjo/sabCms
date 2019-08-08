@@ -1,0 +1,140 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:h="http://xmlns.jcp.org/jsf/html" styleClass="row"
+              xmlns:f="http://xmlns.jcp.org/jsf/core" > 
+    <div class="box">
+        <div class="box-header">
+            <h:form id="navform" prependId="false">
+                <ul class="nav nav-tabs nav-tabs-left">
+                    <li id="lilist" class="active">
+                        <a data-toggle="tab" href="#list">
+                            <i class="icon-user"></i>
+                            user management
+                        </a>
+                    </li>
+                    <li id="lilist" class="">
+                        <h:commandLink value="Add User"
+                                       action="#{userController.addNewUser()}">
+
+                            <i class="icon-plus"></i>
+                        </h:commandLink>
+                    </li>
+                </ul>
+            </h:form> 
+        </div>
+        <div class="box-content padded">
+            <div class="tab-content">
+                <div id="list" class="tab-pane box active" style="font-size: 1.0em; padding: 5px;">
+                    <div class="tab-pane box active" id="list">
+                        <div class="box" style="margin-bottom: -1px">
+                            <div class="box-header">
+                                <span class="title">User Access Control</span>
+                            </div>
+                        </div>
+                        <h:panelGroup layout="block" style="border: 1px solid #F0F0F1; padding: 10px 5px">
+                            <h:form id="userForm" class="form-horizontal" prependId="false">
+                        <div style="height: auto;background: #00AAE7; padding: 3px; color: white">     
+                        <h:messages/>
+                                </div>
+                                <h:panelGroup id="userAdd" layout="block">
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <label class="control-label">User Code</label>
+                                            <h:inputText value="Auto" disabled="true" rendered="#{!userController.inEditMode}"/>
+                                            <h:inputText value="#{userController.user.adminUserId}" disabled="true" rendered="#{userController.inEditMode}"/>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <label class="control-label">Username</label>
+                                            <h:inputText value="#{userController.user.username}" styleClass="col-md-3" 
+                                                         required="true" requiredMessage="Please enter username"/>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <label class="control-label">User Password</label>
+                                            <h:inputSecret value="#{userController.userPassword}"
+                                                           required="#{userController.inEditMode ?'false':'true'}" requiredMessage="Please enter user password"/>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <label class="control-label">E-mail</label>
+                                            <h:inputText value="#{userController.user.emailAddress}" styleClass="col-md-3"/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <label class="control-label">Access Level</label>
+                                            <h:selectOneMenu value="#{userController.user.accessLevel}" styleClass="uniform">
+                                                <f:selectItem itemLabel="Administrator" itemValue="admin" />   
+                                                <f:selectItem itemLabel="P.R.O." itemValue="pro" />
+
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <h:commandButton class="btn btn-primary margr10" value="Save #{userController.inEditMode ? 'Editted':'New'} User"
+                                                         action="#{userController.saveAdminUser()}"/>
+                                        <h:commandButton class="btn btn-primary margr10" value="Reset Form"
+                                                         action="#{userController.reset()}" rendered="#{userController.inEditMode}"/>
+                                        <h:commandButton class="btn btn-danger margr10" value="Delete User" rendered="#{userController.inEditMode}"
+                                                         action="#{userController.deleteAdminUser()}" onclick="return confirm('Are you sure you want to delete?')"/>
+                                    </div>
+                                </h:panelGroup>
+
+
+                                <h:dataTable value="#{userController.users}" var="o" styleClass="dTable responsive dataTable">
+                                    <h:column>
+                                        <f:facet name="header">Code</f:facet>
+                                            #{o.adminUserId}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Username</f:facet>
+                                            #{o.username}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Password</f:facet>
+                                            {{#################}}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Access Level</f:facet>
+                                            #{o.accessLevel}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">E-mail</f:facet>
+                                            #{o.emailAddress}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Account Date</f:facet>
+                                        <h:outputText value="#{o.accountDate}">
+                                            <f:convertDateTime pattern="dd-MMM-yyyy hh:mm:ss a" timeZone="GMT"/>
+                                        </h:outputText>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Last Login</f:facet>
+                                        <h:outputText value="#{o.lastLogin}">
+                                            <f:convertDateTime pattern="dd-MMM-yyyy hh:mm:ss a" timeZone="GMT"/>
+                                        </h:outputText>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Options</f:facet>
+                                        <h:commandLink rel="tooltip" class="btn btn-blue" style="padding: 0px 10px!important"
+                                                       action="#{userController.editAdminUser()}">
+                                            <i class="icon-wrench"></i>Select
+                                            <f:ajax render=":userForm:userAdd"/>
+                                            <f:setPropertyActionListener target="#{userController.user}" value="#{o}" />
+                                        </h:commandLink>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+
+                        </h:panelGroup>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:panelGroup>

@@ -1,0 +1,624 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <link rel="shortcut icon" href="./theme/Resources_ama/img/favicon.ico" type="image/x-icon"></link>
+
+        <title>                         
+            <ui:insert name="adv_title">${commonQuery.getApplicationSettings(2,1)}</ui:insert> 
+
+        </title>      
+
+        <!-- Bootstrap Core CSS -->
+        <link href="./theme/Resources_ama/css/bootstrap.css" rel="stylesheet"/>
+        <link href="./theme/Resources_ama/css/easy-responsive-tabs.css" rel="stylesheet"/>
+
+        <!--gallery css-->
+        <link href="./theme/Resources_ama/css/facebox.css" rel="stylesheet" type="text/css" />
+        <link href="./theme/Resources_ama/css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="./js/facebox.js"></script>
+        <script type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-prettyPhoto.js"></script>
+
+        <!-- Gallery Specific Elements --> 
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("a[rel^='prettyPhoto']").prettyPhoto({
+                    theme: 'dark_rounded'
+                });
+            });
+        </script>
+
+
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $('a[rel*=facebox]').facebox({
+                    loadingImage: './theme/Resources_ama/navs/loading.gif',
+                    closeImage: './theme/Resources_ama/navs/closelabel.png'
+                })
+            })
+        </script>
+        <!--End of Gallery-->
+        <!-- Custom CSS -->
+        <link href="./theme/Resources_ama/css/business-casual.css" rel="stylesheet"/>   
+        <link href="./theme/Resources_ama/css/main.css" rel="stylesheet"/>
+        <link href="./theme/Resources_ama/css/anythingslider.css" rel="stylesheet"/>
+        <style>
+            .demo{margin:0 auto;width:980px;}
+            .demo h1{margin:33px 0 25px;}
+            .demo h3{margin:10px 0;}
+            pre{background-color:#FFF;}
+            @media only screen and (max-width:780px){
+                .demo{margin:5%;width:90%;}
+                .how-use{display:none;float:left;width:300px;}
+            }
+            #tabInfo{display:none;}
+        </style>
+    </h:head>     
+
+    <h:body>
+        <div id="fb-root"></div>
+        <!--<script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&amp;version=v2.5";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>-->
+
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id))
+                            return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+        <center>
+
+
+            <div class="all" >
+                <div class="black">
+                    <div class="topmost">
+                        <div class="container "  style=""> 
+
+                            <h:panelGroup layout="block" styleClass="upper-link fr">
+                                <h:outputText value="#{commonQuery.upperLinks(6, false, false)}" escape="false"/>
+                            </h:panelGroup>
+
+
+                            <!--<div style="clear: both"/>-->
+
+
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <!--                        <script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                                 ama 
+                                                <ins class="adsbygoogle"
+                                                     style="display:inline-block;width:728px;height:90px"
+                                                     data-ad-client="ca-pub-4134455030910379"
+                                                     data-ad-slot="9197412845"></ins>
+                                                <script>
+                                                            (adsbygoogle = window.adsbygoogle || []).push({});
+                                                </script>-->
+                    </div>
+
+
+
+                    <div class="container " >
+                        <div style="float: left">
+
+                            <div class="brand">
+                                <h:outputText  value="${commonQuery.resourcedetails(11,false )}" style="float: left" escape="false" />
+                                <h:outputText style="font-size: 40px;" value="${commonQuery.getApplicationSettings(0,1)} " />
+                                <br/>
+                                <div class="address-bar" style="font-size: 12px; margin-top: 10px;">
+                                    ${commonQuery.getApplicationSettings(3,1)} 
+                                </div>
+
+                            </div>
+                        </div>   
+
+                        <div class="fb">
+                            <a href="https://www.facebook.com/pages/Accra-Metropolitan-Assembly/850180948408704?fref=ts" target="none"><img src="./theme/Resources_ama/img/fb.png" /></a>
+                        </div>
+                        <div class="tw">
+                            <a href="http://twitter.com/AccraMetropolis" target="none"><img src="./theme/Resources_ama/img/tw.png" /> </a>
+                        </div>
+                        <div class="g">
+                            <a href="http://google.com/hangouts" target="none">  <img src="./theme/Resources_ama/img/g.png" /></a>
+                        </div>
+
+
+                    </div>
+                </div>  
+
+                <nav class="navbar navbar-inverse " role="navigation">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <div class="navbar-brand" href="" style="float: left">
+                                    <h:outputText style="color: gold" value="${commonQuery.getApplicationSettings(0,1)} " />
+                                </div>
+                            </button>
+                            <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <h:outputText value="${commonQuery.homeLinks(1,false, true, false, false)}" escape="false"/>
+
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.container -->
+                </nav>
+                <!--<div class="bigSpace"/>-->
+
+
+
+
+                <div class="container">
+                    <div class="transparentBorder">
+                        <div class="smallSpace"/>
+                        <center>
+                            <div class="transparentWhite">
+
+
+
+
+                                <div class="row">
+
+                                    <div class="col-lg-9 col-md-9 swipe">
+
+
+                                        <h:panelGroup layout="block" styleClass="pcontent">
+                                            <h:panelGroup styleClass=" left-panel " layout="block" >
+                                                <div class="anythingSlider anythingSlider-metallic activeSlider" style="width: 700px; height: 310px;">
+                                                    <div class="anythingWindow">
+                                                        <h:outputText value="#{commonQuery.Slider1(5328, false, true)}" escape="false"/>
+                                                    </div>
+                                                    <div class="anythingControls" style="display: block;"> 
+
+                                                    </div>
+                                                </div>
+                                            </h:panelGroup></h:panelGroup>
+
+                                    </div>
+
+
+
+                                    <div class="col-lg-3 col-md-3 col-sm-6  col-xs-6 mayor" >
+
+                                        <li class="mce border square-border" style="max-height: 300px; overflow-y: hidden">
+                                            <div>
+                                                <h:outputText class="img-responsive" escape="false"  value="#{commonQuery.groupPictures(253, 'ul', 'mces','img-responsive','bottom', true,true)}"/>
+                                                <h:outputText style="font-size: 10px;color: #777777" value="#{commonQuery.shortenMce(5330)}" escape="false"/>  
+                                            </div>
+                                        </li>
+                                        <br/> 
+
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" >
+
+                                        <li class="rlink border square-border" >
+                                            <div class="inner header clist" >
+
+                                                <h4 class=" header"><h:outputText   value="#{commonQuery.getPageDetails(5144).pageTitle}" escape="false"/>  </h4>
+                                                <p style="text-align: left;color: #777777; font-size: 12px"><h:outputText value="#{commonQuery.getPageDetails(5144).pageContent}" escape="false"/>  </p> 
+
+                                            </div>
+                                        </li>
+                                    </div>
+                                </div>
+                            </div>
+                        </center>
+                        <div class="smallSpace"/>
+
+                    </div>   
+
+
+                    <div class="smallSpace"/>
+
+
+
+                    <div class="transparentBorder">
+                        <div class="smallSpace"/>
+                        <center>
+                            <div class="transparentBlack">
+
+
+                                <div class="col-lg-9">
+
+                                    <ul id="myTab" class="nav nav-tabs nav-justified">
+                                        <li class="active"><a href="#general" data-toggle="tab"><i class="fa fa-database"></i> General</a>
+                                        </li>
+                                        <li class=""><a href="#tourism" data-toggle="tab"><i class="fa fa-tree"></i> Tourism</a>
+                                        </li>
+                                        <li class=""><a href="#hotel" data-toggle="tab"><i class="fa fa-car"></i> Hotels</a>
+                                        </li>
+                                        <li class=""><a href="#gallery" data-toggle="tab"><i class="fa fa-support"></i> Gallery</a>
+                                        </li>
+                                    </ul>
+
+                                    <div id="myTabContent" class="tab-content">
+                                        <div class="tab-pane fade active in" id="general">
+                                            <h4 style="color: gold">
+
+                                                <div class="panel panel-default">
+
+                                                    <div class="panel-body">
+
+                                                        <h:panelGroup layout="block" styleClass="holder shadowless rounded-half10">
+                                                            <div class="block block-blue">
+                                                                <h4 style="color: #008000" >${commonQuery.getPageDetails(5327).pageTitle}</h4>
+                                                                <ul class="announce" style="text-align: left">
+                                                                    <h:outputText  value="#{commonQuery.getPageDetails(5327).pageContent}" escape="false"/>  
+                                                                    <li></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="block block-yellow">
+                                                                <h4  style="color: gold">Apply for it</h4>
+                                                                <ul class="bill">
+                                                                    <li >Bulky waste collection </li>
+                                                                    <li>Rented property licence </li>
+                                                                    <li>Visitor Parking Permit </li>
+                                                                    <li>Business Operating Permit </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="block block-blue" style="text-align: left">
+                                                                <h4 style="color: #008000" ><h:outputText   value="#{commonQuery.getPageDetails(5348).pageTitle}" escape="false"/>  </h4>
+                                                                <h:outputText escape="false" value="#{commonQuery.slidingPicturesUnderParent_id(267, 'ul', 'tops','imgleft','imgdesc', true,true)}"/>  </div>
+                                                        </h:panelGroup>
+
+
+                                                    </div>
+                                                </div>
+
+                                            </h4>
+                                        </div>
+                                        <div class="tab-pane fade " id="tourism">
+                                            <h4 style="color: gold">No records for Tourism</h4>
+                                        </div>
+                                        <div class="tab-pane fade" id="hotel">
+                                            <h4 style="color: gold">No records for Hotels</h4>
+                                        </div>
+                                        <div class="tab-pane fade" id="gallery">
+                                            <!--<h4 style="color: gold">No records for Gallery</h4>-->
+
+                                            <div class=" ">
+                                                <h3>Albums Available</h3>
+                                                <div class="row" style="height: 300px; overflow-y: scroll; ">
+                                                 
+                                                    
+                                                    <h:outputLabel value="#{commonQuery.getAlbums(5004, true)}" escape="false"/>
+                                                    
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="col-lg-3">
+
+                                    <br/>
+                                    <li class="rlink border square-border" style="height: 350px; overflow-y: scroll ">
+                                        <div class="inner header clist" >
+                                            <h4>${commonQuery.getPageDetails(5362).pageTitle}</h4>
+                                            <h:outputText style="text-align: left" value="#{commonQuery.listCategoryDataResource(272, false, true)}" escape="false" />
+
+
+
+                                        </div>
+                                    </li>
+                                </div>
+
+
+                            </div>
+                        </center>
+                        <div class="smallSpace"/>
+
+                    </div>   
+
+
+
+                    <br/>
+                    <div class="transparentBorder">
+                        <div class="smallSpace"/>
+                        <center>
+                            <div class="transparentWhite" style="min-height: 400px">
+
+
+
+
+                                <div class="col-lg-12">
+                                    <h4 style="color: #007f0e">AMA Sub-Metro's And Their Locations On Map</h4>
+
+
+
+
+
+                                </div>
+                                <div id="tabInfo">
+                                    Selected tab: <span class="tabName"></span>
+                                </div>
+                                <br />
+                                <br />
+                                <div id="verticalTab">
+                                    <ul class="resp-tabs-list" style="color: #007f0e; overflow: scroll; height: 350px" >
+                                        <li   class="nav nav-tabs nav-justified">Ashiedu Keteke Sub Metro</li>
+                                        <li   class="nav nav-tabs nav-justified">Ayawaso East Sub Metro</li>
+                                        <li  class=" nav nav-tabs nav-justified">Ablekuma North Sub Metro</li>
+                                        <li  class=" nav nav-tabs nav-justified">Ablekuma South Sub Metro</li>
+                                        <li  class=" nav nav-tabs nav-justified">Ablekuma Central Sub Metro</li>
+                                        <li  class=" nav nav-tabs nav-justified">Okaikoi North Sub Metro</li>
+                                        <li   class="nav nav-tabs nav-justified">Okaikoi South Sub Metro</li>
+                                        <li   class="nav nav-tabs nav-justified">Ayawaso Central Sub Metro</li>
+                                        <li   class="nav nav-tabs nav-justified">Osu Klottey Sub Metro</li>
+                                        <li   class="nav nav-tabs nav-justified">Ayawaso West Sub Metro</li>
+                                    </ul>
+                                    <div class="resp-tabs-container">
+                                        <div>
+                                            <a href="?Ashiedu-Keteke&amp;page=5553">
+                                                <img style="max-height: 100%; max-width: 100%;height: 320px; width: 700px;" class="img-responsive" src="./theme/Resources_ama/img/ashiedu.JPG"/>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="?ayawaso-east&amp;page=5555">
+
+                                                <img style="max-height: 100%; max-width: 100%;height: 320px; width: 700px;" class="img-responsive" src="./theme/Resources_ama/img/ayawasoeast.JPG"></img>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="?okaikoi-north&amp;page=5555">
+
+                                                <img style="max-height: 100%; max-width: 100%;height: 320px; width: 700px;" class="img-responsive" src="./theme/Resources_ama/img/okaikoinorth.JPG"></img>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <p>Ablekuma South Sub Metro</p>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <p>Ablekuma Central Sub Metro</p>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <p>Okaikoi North Sub Metro</p>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p>Okaikoi South Sub Metro</p>
+                                        </div>
+                                        <div>
+                                            <p>Ayawaso Central Sub Metro</p>
+                                        </div>
+                                        <div>
+                                            <p>Osu Klottey Sub Metro</p>
+                                        </div>
+
+                                        <div>
+                                            <p>Ayawaso West Sub Metro</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <br />
+
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </center>
+                        <div class="smallSpace"/>
+
+                    </div> 
+                    <div class="smallSpace"/>
+
+                    <div class="transparentBorder">
+                        <div class="smallSpace"/>
+                        <center>
+                            <div class="transparentBlack">
+
+
+
+
+                                <div class="col-lg-6">
+                                    <h:outputLabel style="color: white" value="Facebook Timeline"/>
+                                    <div class="fb-page" data-href="https://www.facebook.com/accrametropolitanassembly/" data-tabs="timeline" data-width="450" data-height="380" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/accrametropolitanassembly/"><a href="https://www.facebook.com/accrametropolitanassembly/">Accra Metropolitan Assembly</a></blockquote></div></div>
+                                </div>
+                                <div class="col-lg-6"> 
+                                    <h:outputLabel style="color: white" value="Trending Now"/>
+
+                                    <a class="twitter-timeline" href="https://twitter.com/AccraMetropolis" data-widget-id="702817687135789056">Tweets by @AccraMetropolis</a>
+                                    <script>!function (d, s, id) {
+                                            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                                            if (!d.getElementById(id)) {
+                                                js = d.createElement(s);
+                                                js.id = id;
+                                                js.src = p + "://platform.twitter.com/widgets.js";
+                                                fjs.parentNode.insertBefore(js, fjs);
+                                            }
+                                        }(document, "script", "twitter-wjs");</script>
+
+
+                                </div>  
+
+
+
+
+                            </div>
+                        </center>
+                        <div class="smallSpace"/>
+
+                    </div>   
+                    <div class="bigSpace"/>
+
+
+                </div>
+
+
+                <!--<div class="bigSpace"/>-->
+
+                <div class="footer" >
+                    <br/>
+                    <div class="container">
+
+                        <div class="col-lg-3" style="text-align: left; font-size: 12px">
+                            <h3 style="font-size: 16px;">${commonQuery.getPageDetails(5238).pageTitle}</h3><br/>
+                            <h:outputText style="color: white" value="#{commonQuery.listCategoryData(139, false, false)}" escape="false"/>
+                        </div>
+
+
+                        <div class="col-lg-3" style="text-align: left; font-size: 12px">
+                            <h3 style="font-size: 16px;">${commonQuery.getPageDetails(5140).pageTitle}</h3><br/>
+                            <h:outputText value="#{commonQuery.listCategoryData(133, false, false)}" escape="false"/>
+                        </div>
+
+
+
+
+                        <div class="col-lg-3 "  style="text-align: left; font-size: 12px">
+                            <h3 style="font-size: 16px;"> ${commonQuery.getApplicationSettings(7,1)} </h3> <br/>
+                            <h:outputText style="font-size: 14px;" value="${commonQuery.getApplicationSettings(8,1)}" escape="false"/>
+                        </div>
+                        <div class="col-lg-3" style="text-align: left; font-size: 12px">
+                            <h3 style="font-size: 16px;">${commonQuery.getPageDetails(5304).pageTitle}</h3><br/>
+                            <ul>
+                                <li>
+                                    <a href="?location-map&amp;page=5166" >
+                                        <h:outputText value="#{commonQuery.imageList(5304, true)}" escape="false"/>  
+                                    </a>
+                                    <br/>                                    <br/>
+
+                                    <a href="http://sabonay.com" style="float: right"> Powered  scms 1.1</a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- jQuery Version 1.11.0 -->
+                <script src="./theme/Resources_ama/js/jquery-1.11.0.js"></script>
+
+                <!-- Bootstrap Core JavaScript -->
+                <script src="./theme/Resources_ama/js/bootstrap.min.js"></script>
+
+                <script type="text/javascript" src="./js/jquery.js"></script> <script type="text/javascript" src="./js/easyslider1.7.js"></script>
+                <script type="text/javascript" src="./js/jquery.easing.1.2.js"></script>
+                <script type="text/javascript" src="./js/jquery.anythingslider.js"></script>   
+                <script type="text/javascript" src="./js/tabcontent.js"></script>  
+                <script type="text/javascript" src="./js/jquery_cycle_all.js"></script> 
+                <script type="text/javascript" src="./js/easy-responsive-tabs.js"></script> 
+
+
+                <script>
+                                        // Set up Sliders
+                                        // **************
+                                        $(function () {
+                                            $('#slider1').anythingSlider({
+                                                //                    theme : 'metallic',
+                                                expand: true,
+                                                enableArrows: false,
+                                                enableArrows : false,
+                                                        enableNavigation: true,
+                                                autoPlayLocked: true,
+                                                delay: 7000,
+                                                resumeDelay: 4000,
+                                                hashTags: false,
+                                                buildStartStop: false,
+                                                enableKeyboard: false,
+                                                autoPlay: true
+                                            });
+                                        });
+                </script>
+
+                <script>
+
+                    jQuery(document).ready(function () {
+                        $('.mces').cycle({
+                            random: 1,
+                            fx: 'scrollUp' // choose your transition type, ex: fade, scrollUp, shuffle,zoom etc...
+                        });
+                    });
+
+                    jQuery(document).ready(function () {
+                        $('.tops').cycle({
+                            random: 1,
+                            fx: 'turnDown' // choose your transition type, ex: fade, scrollUp, shuffle,zoom etc...
+                        });
+                    });
+
+                </script>
+
+
+                <script>
+                    $(document).ready(function () {
+                        $('#horizontalTab').easyResponsiveTabs({
+                            type: 'default', //Types: default, vertical, accordion           
+                            width: 'auto', //auto or any width like 600px
+                            fit: true, // 100% fit in a container
+                            closed: 'accordion', // Start closed if in accordion view
+                            activate: function (event) { // Callback function if tab is switched
+                                var $tab = $(this);
+                                var $info = $('#tabInfo');
+                                var $name = $('span', $info);
+                                $name.text($tab.text());
+                                $info.show();
+                            }
+                        });
+                        $('#verticalTab').easyResponsiveTabs({
+                            type: 'vertical',
+                            width: 'auto',
+                            fit: true
+                        });
+                    });
+                </script>
+                <!--</div>-->
+            </div>
+        </center>
+    </h:body>
+
+</html>

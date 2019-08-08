@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+    <h:head>
+        <meta http-equiv="imagetoolbar" content="no" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./theme/Resources_kma/css/main.css" rel="stylesheet" type="text/css" />
+        <link href="./theme/Resources_kma/css/anythingslider.css" rel="stylesheet" type="text/css" />
+        <link href="./theme/Resources_kma/css/facebox.css" rel="stylesheet" type="text/css" />
+        <link href="./theme/Resources_kma/css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="./theme/Resources_kma/navs/favicon.ico" type="image/x-icon"></link>
+        <!--<link rel="shortcut icon" href="./theme/scapital/nav/favicon.ico" type="image/x-icon" />-->
+        <title>
+            <ui:insert name="adv_title">${commonQuery.getApplicationSettings(2,1)}</ui:insert> 
+        </title>
+
+        <script type="text/javascript" src="./js/facebox.js"></script>
+        <script type="text/javascript" src="./js/jquery.js"></script>
+
+        <script type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-prettyPhoto.js"></script>
+        <script type="text/javascript" src="./js/easyslider1.7.js"></script>
+        <script type="text/javascript" src="./js/jquery.easing.1.2.js"></script>
+        <script type="text/javascript" src="./js/jquery.anythingslider.js"></script>
+
+
+        <!-- Gallery Specific Elements --> 
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("a[rel^='prettyPhoto']").prettyPhoto({
+                    theme: 'dark_rounded'
+                });
+            });
+        </script>
+
+
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $('a[rel*=facebox]').facebox({
+                    loadingImage: './theme/Resources_kma/navs/loading.gif',
+                    closeImage: './theme/Resources_kma/navs/closelabel.png'
+                })
+            })
+        </script>
+        <script>
+            // Set up Sliders
+            // **************
+            $(function () {
+                $('#slider1').anythingSlider({
+                    //                    theme : 'metallic',
+                    expand: true,
+                    enableArrows: false,
+                    enableArrows : false,
+                            enableNavigation: true,
+                    autoPlayLocked: true,
+                    delay: 7000,
+                    resumeDelay: 4000,
+                    hashTags: false,
+                    buildStartStop: false,
+                    enableKeyboard: false,
+                    autoPlay: true
+                });
+            });
+        </script>
+    </h:head>
+    <h:body>
+        <h:panelGroup layout="block" styleClass="adv-wrapper-upper">
+            <h:panelGroup layout="block" styleClass="upper-link fl">
+                <h:outputText value="#{commonQuery.upperLinks(6, false, false)}" escape="false"/>
+            </h:panelGroup>
+            <ul id="get-connected" class="fl">  
+                <li>
+                    <a id="fbk" href="https://www.facebook.com/pages/Kumasi-Metropolitan-Assembly/365696136865714" title="Connect with KMA on Facebook" target="_blank">Facebook</a>
+                </li>
+                <li>
+                    <a id="twt" href="https://twitter.com/city_kma" title="Connect with KMA on Twitter" target="_blank">Twitter</a>
+                </li>
+                <li>
+                    <a id="lin" href="https://plus.google.com/104000744222068509891" title="Connect with KMA on Google+" target="_blank">Google +</a>
+                </li>
+            </ul>
+            <h:panelGroup layout="block" styleClass="searchword fr">
+                <h:form>
+                    <h:inputText  value="Search..." onfocus="if (this.value == 'Search...')
+                                this.value = '';" onblur="if (this.value == '')
+                                            this.value = 'Search...';"/>
+                    <h:commandButton value="Go" disabled="true"/>
+                </h:form>
+
+            </h:panelGroup>
+            <div style="clear: both"/>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="adv_wrapper shadow">
+            <h:panelGroup layout="block" styleClass="adv_header_wrapper">
+                <h:panelGroup layout="block" styleClass="site_header_name fl">
+                    <object type="application/x-shockwave-flash" 
+                            data="./theme/Resources_kma/navs/banner.swf" 
+                            width="560" height="92">
+                        <param name="movie" value="./theme/Resources_kma/navs/banner.swf" />
+                        <param name="bgcolor" value="#FFFFFF"/>
+                        <param name="quality" value="high"/>
+                        <param name="seamlesstabbing" value="false"/>
+                        <param name="allowscriptaccess" value="samedomain"/>
+                        <img src="./theme/Resources_kma/navs/noani.png"/>
+                    </object>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="site_header_name fr">
+                    <h:outputText value="${commonQuery.getResourceDetail(5394, true, true)}" escape="false"/>
+                </h:panelGroup>
+                <div style="clear: both"/>
+            </h:panelGroup>
+
+            <div style="clear: both"/>
+            <h:panelGroup layout="block" styleClass="menu_horizontal fl">
+                <h:outputText value="${commonQuery.homeLinks3(1,false, true, false, false)}" escape="false"/>
+            </h:panelGroup>
+            <div style="clear: both"/>
+            <h:panelGroup layout="block" styleClass="khead"/> 
+            <h:panelGroup layout="block" styleClass="pcontent">
+                <h:panelGroup styleClass="left-panel fl" layout="block" >
+                    <div class="anythingSlider anythingSlider-metallic activeSlider" style="width: 700px; height: 310px;">
+                        <div class="anythingWindow">
+                            <h:outputText value="#{commonQuery.Slider1(5328, false, true)}" escape="false"/>
+                        </div>
+                        <div class="anythingControls" style="display: block;"> 
+
+                        </div>
+                    </div>
+                    <div style="clear: both"/> 
+                    <h:panelGroup layout="block">
+                        <h:panelGroup layout="block" styleClass="holder shadowless rounded-half10">
+                            <div class="block block-green">
+                                <h3>Apply for it</h3>
+                                <ul class="bill">
+                                    <li>Bulky waste collection </li>
+                                    <li>Rented property licence </li>
+                                    <li>Visitor Parking Permit </li>
+                                    <li>Business Operating Permit </li>
+                                </ul>
+                            </div>
+                            <div class="block block-yellow">
+                                <h3>Report it</h3>
+                                <ul class="bill">
+                                    <li>Abandoned vehicle </li>
+                                    <li>Bulky Household waste Collection </li>
+                                    <li>Anti Social Behaviour </li>
+                                    <li>Illegal Posters and Bill Boards </li>
+                                </ul>
+                            </div>
+                            <div class="block block-blue">
+                                <h3>Pay it</h3>
+                                <ul class="bill">
+                                    <li>Council Tax </li>
+                                    <li>Parking Penalty Charge </li>
+                                    <li>Fixed Penalty Notice </li>
+                                    <li>Housing rent </li>
+                                </ul>
+                            </div>
+                        </h:panelGroup>
+
+                        <h:panelGroup layout="block" styleClass="holder shadowless rounded-half10">
+                            <div class=" ">
+                                <h3>Gallery Albums</h3>
+                                <div class="row" style="height: 300px; overflow-y: scroll; ">
+
+
+                                    <h:outputLabel value="#{commonQuery.getAlbums(5004, true)}" escape="false"/>
+
+                                </div>
+
+                            </div>
+
+                        </h:panelGroup>
+                    </h:panelGroup>
+                </h:panelGroup>
+
+                <h:panelGroup styleClass="right-panel fr" layout="block">
+                    <h:panelGroup id="callout" layout="block">
+                        <ul>
+                            <li class="mce border square-border">
+                                <div>
+                                    <h:outputText escape="false" value="#{commonQuery.groupPictures(253, 'ul', 'mces','','bottom', true,true)}"/>
+                                </div>
+                            </li>
+                            <li class="rlink border square-border">
+                                <div class="inner header">
+                                    <h3>${commonQuery.getPageDetails(5348).pageTitle}</h3>
+                                    <h:outputText escape="false" value="#{commonQuery.groupPictures(5348, 'ul', 'tops','imgleft','imgdesc', true,true)}"/>
+                                </div>
+                            </li>
+                            <li class="rlink border square-border">
+                                <div class="inner header clist">
+                                    <h3>${commonQuery.getPageDetails(5362).pageTitle}</h3>
+                                    <h:outputText value="#{commonQuery.listCategoryDataResource(272, false, true)}" escape="false" />
+                                </div>
+                            </li>
+                        </ul>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <div style="clear: both"/>
+
+
+
+
+
+            </h:panelGroup>
+
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="kfoot"/> 
+        <div class="clear"/>
+
+        <h:panelGroup layout="block" styleClass="adv-footer">
+
+            <div id="fmenu" class="row fl">
+                <div class="block fl">
+                    <h3>${commonQuery.getPageDetails(5238).pageTitle}</h3>
+                    <h:outputText value="#{commonQuery.listCategoryData(139, false, false)}" escape="false"/>
+                </div>
+                <div class="block fl">
+                    <h3>${commonQuery.getPageDetails(5140).pageTitle}</h3>
+                    <h:outputText value="#{commonQuery.listCategoryData(133, false, false)}" escape="false"/>
+                </div>
+                <div class="block fl">
+                    <h3>${commonQuery.getPageDetails(5304).pageTitle}</h3>
+                    <ul>
+                        <li>
+                            <h:outputText value="#{commonQuery.imageList(5304, true, true)}" escape="false"/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block fl">
+                    <h3>${commonQuery.getPageDetails(5351).pageTitle}</h3> 
+                    <h:outputText value="#{commonQuery.listCategoryData(230, false, false)}" escape="false"/>
+                </div>
+                <div class="block fl"> 
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><h:outputText value="${commonQuery.getApplicationSettings(7,1)}" escape="false"/></li>
+                        <li><h:outputText value="${commonQuery.getApplicationSettings(8,1)}" escape="false"/></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="legal fl">
+                Copyright &copy; ${commonQuery.appDate} ${commonQuery.getApplicationSettings(0,1)}. All Rights Reserved.<br/>
+            </div>
+        </h:panelGroup>
+
+        <script type="text/javascript" src="./js/jquery_cycle_all.js"></script>
+        <script type="text/javascript" src="./js/tabcontent.js"></script>
+        <script type="text/javascript">
+                                    jQuery(document).ready(function () {
+                                        $("#slider").easySlider({
+                                            auto: true,
+                                            speed: 200,
+                                            pause: 5000,
+                                            controlsShow: false,
+                                            continuous: true
+                                        });
+                                    });
+
+                                    jQuery(document).ready(function () {
+                                        $('.mces').cycle({
+                                            random: 1,
+                                            fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle,zoom etc...
+                                        });
+                                    });
+
+                                    jQuery(document).ready(function () {
+                                        $('.tops').cycle({
+                                            random: 1,
+                                            fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle,zoom etc...
+                                        });
+                                    });
+        </script>
+        <script type="text/javascript">
+
+            var countries = new ddtabcontent("countrytabs")
+            countries.setpersist(true)
+            countries.setselectedClassTarget("link") //"link" or "linkparent"
+            countries.init()
+
+        </script>
+    </h:body>
+
+</html>
+
+

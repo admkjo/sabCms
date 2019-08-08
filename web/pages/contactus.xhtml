@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:f="http://java.sun.com/jsf/core"
+              xmlns:ui="http://java.sun.com/jsf/facelets">
+
+                <h:form>         
+                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    
+                    <h:outputLabel for="fromField" value="Your email: " />
+                    <h:inputText class="form-control" value="#{contactBean.selected.emailfrom}" id="fromField" required="true" requiredMessage="Email is required"/>
+                    <h:message for="fromField" errorStyle="color: red"/>
+                    <br/>
+                     
+                    <h:outputLabel for="subjectField" value="Subject: "/>
+                    <h:inputText class="form-control" value="#{contactBean.selected.subject}" id="subjectField" required="true" requiredMessage="Subject Required"/>
+                    <h:message for="subjectField" errorStyle="color: red"/>
+                    <br/>
+                    <h:outputLabel for="contentField" value="Message: "/>
+                    <br/>
+                    <h:inputTextarea class="form-control" rows="5" cols="10" value="#{contactBean.selected.content}" id="contentField" required="true" requiredMessage="Message required"/>
+                    <h:message for="contentField" errorStyle="color: red"/>
+                    <br/>
+                    
+                    <h:commandLink value="Send " class="btn btn-primary margr10" action="#{contactBean.send()}" />
+                    #{' '}
+                    <h:commandLink value=" Cancel"  class="btn btn-primary margr10" action="index" />
+                </h:form>
+                
+</h:panelGroup>

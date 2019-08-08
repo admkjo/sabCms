@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:q="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <!--<script type="text/javascript" src="resources/js/bekinsoft.js"></script>-->
+        <f:facet name="first">
+            <meta http-equiv="refresh" content="3000" ></meta>
+            <meta content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" name="viewport"/>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta content="en-US" http-equiv="Content-Language"/>
+            <meta content="Sabonay Technologies" name="author"/>
+            <ui:insert name="index"></ui:insert>
+
+            <link rel="shortcut icon" href="./theme/Resources_stma/navs/favicon.ico" type="image/x-icon" />
+
+        </f:facet>
+        <title>
+            <ui:insert name="title">#{msg.TITLE}</ui:insert>  
+        </title>
+        <f:facet name="last">  
+            <h:outputStylesheet library="css" name="bekinsoft.css" />
+            <h:outputStylesheet library="css" name="facebox.css" />
+            <h:outputStylesheet library="css" name="custom.css" />
+            <h:outputStylesheet library="css" name="font.css" />
+            <h:outputStylesheet library="css" name="jquery-te-1.4.0.css" />
+            <h:outputScript library="js" name="bekinsoft.js" target="head" />
+            <h:outputScript library="js" name="ajax.js" target="head" />
+            <h:outputScript library="js" name="jquery-te-1.4.0.min.js" target="head" />
+            
+            <!--<h:outputScript library="js/facefiles" name="jquery-1.2.2.pack.js" target="head" />-->
+            <!--<h:outputScript library="js/facefiles" name="facebox.js" target="head" />-->
+            <!--<h:outputScript library="js" name="jquery.lightbox-0.5.js" target="head" />-->
+            <!--            <style type="text/css">
+                            .jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}
+                        </style>-->
+
+        </f:facet>
+        <!--<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>-->
+<!--        <script type="text/javascript" src="../resources/js/jquery-te-1.4.0.min.js"></script>-->
+    </h:head>
+    <h:body>
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#input").cleditor();
+            });
+        </script>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $('a[rel*=facebox]').facebox();
+            });
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $('#gallery a').lightBox();
+            });
+        </script>
+        <ui:insert name="main"> 
+            <div class="navbar navbar-top navbar-inverse">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="brand" href="#{request.contextPath}/">#{msg.TITLE} :: ${commonQuery.getApplicationSettings(0,1)}</a>
+                        <ui:insert name="top_side"> 
+                            <h:panelGroup layout="block" rendered="#{adminAccessController.isLogin}">
+                                <ul class="nav pull-right">
+                                    <li class="toggle-primary-sidebar hidden-desktop" data-target=".nav-collapse-primary" data-toggle="collapse">
+                                        <button class="btn btn-navbar" type="button">
+                                            <i class="icon-th-list"></i>
+                                        </button>
+                                    </li>
+                                    <li class="hidden-desktop" data-target=".nav-collapse-top" data-toggle="collapse">
+                                        <button class="btn btn-navbar" type="button">
+                                            <i class="icon-align-justify"></i>
+                                        </button> 
+                                    </li>
+                                </ul>
+
+                                <div class="nav-collapse nav-collapse-top collapse">
+                                    <h:form>
+                                        <ul class="nav pull-right">
+                                            <li class="dropdown">
+                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    user account
+                                                    <b class="caret"></b>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="with-image"><span> #{adminAccessController.loginUsername} </span></li>
+                                                    <li class="divider"></li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="icon-user"></i>
+                                                            <span>profile</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <h:commandLink action="#{userLogin.logoutClient()}" >
+                                                            <i class="icon-power-off"></i>
+                                                            <span>logout</span>
+                                                        </h:commandLink>
+
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <ul class="nav pull-right">
+                                            <li class="dropdown">
+                                                <a href="#">
+                                                    <i class="icon-user"></i>
+                                                    #{adminAccessController.loginUser.userLogin} panel
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="nav pull-right">
+                                            <li class="dropdown">
+                                                <a data-original-title="Logged In Time" data-placement="left" rel="tooltip" href="#">
+                                                    <i class="icon-clock-o"></i>
+                                                    <h:outputText value="#{adminAccessController.loginUser.loginTime}">
+                                                        <f:convertDateTime pattern="dd-MMM-yyyy hh:mm:ss a" timeZone="GMT" />
+                                                    </h:outputText>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </h:form> 
+                                </div>
+                            </h:panelGroup>
+                        </ui:insert>
+                    </div>
+                </div>
+            </div>
+            <ui:insert name="adv_wrapper">
+                <h:panelGroup layout="block" rendered="#{adminAccessController.isLogin}">
+                    <ui:insert name="side_bar">
+                        <div class="sidebar-background">
+                            <div class="primary-sidebar-background"> </div>
+                        </div>
+                        <div class="primary-sidebar">
+                            <br/>
+                            <div style="text-align:center;">
+                                <a href="dashboard.xhtml">
+                                    <img style="max-height:100px; max-width:100px;" src="../resources/images/common/logo.png"/>
+                                </a>
+                            </div>
+                            <br/>
+                            <ui:param name="pray" value="#{facesContext.externalContext.requestServletPath}"/>
+                            <ul class="nav nav-collapse collapse nav-collapse-primary">
+                                <li class="dark-nav #{pray.endsWith('dashboard.xhtml') ? 'active' : ''}">
+                                    <span class="glow"></span>
+                                    <a data-original-title="Dashboard " data-placement="right" rel="tooltip" href="dashboard.xhtml">
+                                        <i class="icon-dashboard icon-2x"></i><span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="dark-nav #{pray.endsWith('content.xhtml') ? 'active' : ''}" >
+                                    <span class="glow"></span>
+                                    <a data-original-title="Content " data-placement="right" rel="tooltip" href="content.xhtml">
+                                        <i class="icon-pencil-square-o icon-2x"></i><span>Content</span>
+                                    </a>
+                                </li>
+<!--                                <li class="dark-nav #{pray.endsWith('category.xhtml') ? 'active' : ''}" >
+                                    <span class="glow"></span>
+                                    <a data-original-title="Category Help" data-placement="right" rel="tooltip" href="category.xhtml">
+                                        <i class="icon-tasks icon-2x"></i><span>category</span>
+                                    </a>
+                                </li>-->
+                                <li class="dark-nav #{pray.endsWith('user.xhtml') ? 'active' : ''}">
+                                    <span class="glow"></span>
+                                    <a data-original-title="User Management " data-placement="right" rel="tooltip" href="user.xhtml">
+                                        <i class="icon-user icon-2x"></i><span>User Management</span>
+                                    </a>
+                                </li>
+                                <li class="dark-nav #{pray.endsWith('setting.xhtml') ? 'active' : ''}">
+                                    <span class="glow"></span>
+                                    <a data-original-title="Settings" data-placement="right" rel="tooltip" href="setting.xhtml">
+                                        <i class="icon-gears icon-2x"></i><span>Settings</span>
+                                    </a>
+                                </li>
+                                <li class="dark-nav #{pray.endsWith('help/Administrator%20Control%20Panel%20User%20Manual.html') ? 'active' : ''}">
+                                    <span class="glow"></span>
+                                    <a data-original-title="Help" target="none" data-placement="right" rel="tooltip" href="help/Administrator%20Control%20Panel%20User%20Manual.html">
+                                        <i class="icon-picture-o icon-2x"></i><span>Help</span>
+                                    </a>
+                                </li>
+                            </ul> 
+                        </div>
+                    </ui:insert>
+                    <ui:insert name="content">
+                        <div class="main-content">
+                            <div class="container-fluid">
+                                <div class="row-fluid">
+                                    <div class="area-top clearfix">
+                                        <div class="pull-left header">
+                                            <h3 class="title">
+                                                <i class="icon-info-circle"></i>
+                                                <ui:insert name="dashboard_title"></ui:insert> 
+                                            </h3>
+                                        </div>
+                                        <div class="pull-right header">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid padded">
+                                <ui:insert name="page_content">
+
+                                </ui:insert>
+                            </div>
+                            <div style="clear:both;color:#aaa; padding:20px;">
+                                <hr/>
+                                <center>
+                                    Copyright © #{languageController.appDate == 2014 ? "": "2014".concat(' -')}  #{languageController.appDate}<br/><a href="#" target="non">#{msg.POWERED_BY}</a>
+
+                                </center>
+                            </div>
+                        </div>
+                    </ui:insert>
+                </h:panelGroup>
+                <h:panelGroup id="loginblock" layout="block" rendered="#{!adminAccessController.isLogin}">
+                    <div class="container">
+                        <ui:insert name="front_page">
+                            <div class="span4 offset4">
+                                <div class="padded">
+                                    <center>
+                                        <img style="height:120px;" src="../resources/images/common/logo.png"/>
+                                    </center>
+
+                                    <h:messages style="padding: 5px; width: auto; background-color: #ffcccc"/>
+                                    <div class="login box" style="margin-top: 10px;">
+
+                                        <div class="box-header">
+                                            <span class="title">user login</span>
+                                        </div>
+                                        <div class="box-content padded">
+                                            <i class="m-icon-swapright m-icon-white"></i>
+                                            <script>
+                                                function check_account_type()
+                                                {
+                                                    var account_type = document.getElementById('account_type').value;
+                                                    if (account_type === "") {
+                                                        Growl.info({title: "Please select an account type first", text: " "})
+                                                        alert();
+                                                        return false;
+                                                    }
+                                                    else
+                                                        return true;
+                                                }
+                                            </script>
+                                            <h:form id="login" prependId="false" class="separate-sections" acceptcharset="utf-8" >
+                                                <div class="input-prepend">
+                                                    <span class="add-on" href="#">
+                                                        <i class="icon-user"></i>
+                                                    </span>
+                                                    <h:inputText q:placeholder="username" autocomplete="off" value="#{userLogin.username}"/>                                       
+                                                </div>
+                                                <div class="input-prepend">
+                                                    <span class="add-on" href="#">
+                                                        <i class="icon-lock"></i>
+                                                    </span>
+                                                    <h:inputSecret q:placeholder="password" value="#{userLogin.password}"/>
+                                                </div>
+                                                <div class="calign">
+                                                    <h:commandButton value="Login" class="btn btn-primary btn-lg" action="#{userLogin.adminLogin()}" style="width: 100%"/>
+                                                </div> 
+                                                <div>
+                                                    <a href="#modal-simple" data-toggle="modal"> forgot password? </a>
+                                                </div>
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;color:#aaa; padding:20px;">
+                                        <hr/>
+                                        <center>
+                                            Copyright © #{commonQuery.appDate == 2014 ? "": "2014".concat(' -')}  #{commonQuery.appDate}<br/><a href="#" target="_blank">#{msg.POWERED_BY}</a>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        </ui:insert>
+
+                    </div>
+                </h:panelGroup>
+            </ui:insert>
+        </ui:insert>
+    </h:body>
+</html>
+

@@ -1,0 +1,62 @@
+/* 
+    Document   : font
+    Created on : Mar 14, 2014, 3:43:11 PM
+    Author     : emma
+    Description:
+    Purpose of the stylesheet follows.
+*/
+
+@font-face
+{
+    font-family: 'Open Sans';
+    font-style: light;
+    font-weight: 300;
+    src: url('../resources/font/OpenSans-Light.ttf');
+}
+
+@font-face
+{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../resources/font/OpenSans-Regular.ttf');
+}
+
+@font-face
+{
+    font-family: 'Open Sans';
+    font-style: bold;
+    font-weight: 600;
+    src: url('../resources/font/OpenSans-Semibold.ttf'); 
+}
+
+@font-face
+{
+    font-family: 'Open Sans';
+    font-style: bolder;  
+    font-weight: 800;
+    src: url('../resources/font/OpenSans-ExtraBold.ttf');
+}
+
+@font-face
+{
+    font-family: 'Sansation';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../resources/font/Sansation-Regular.ttf');
+}
+
+@font-face
+{
+    font-family: 'Sansation';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../resources/font/Sansation-Bold.ttf');
+}
+
+/*@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}*/
